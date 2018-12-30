@@ -1,0 +1,8 @@
+mat-sidenav-container, mat-sidenav,mat-sidenav-content{
+    /* to cover all height of site page */
+    height: 100%;
+}
+mat-sidenav{
+    /* to increase width of sidenav */
+    width: 250px;
+}

@@ -1,0 +1,13 @@
+<!-- add tab in training 
+show tab when current trainig is empty and so on -->
+<mat-tab-group *ngIf="!hasCorrent" >
+  <mat-tab label="New Exercise">
+    <!-- startPress is an eventEmiiter when create a new trainig then hide tabs and show current training -->
+    <app-new-trainig  (startPress)="hasCorrent=true"></app-new-trainig>
+  </mat-tab>
+  <mat-tab label="Past Exercise">
+    <app-past-trainig></app-past-trainig>
+  </mat-tab>
+</mat-tab-group>
+<!-- when show current training when a exercise is runnig -->
+<app-current-trainig *ngIf="hasCorrent" (onGoingExit) ="hasCorrent=false"></app-current-trainig>

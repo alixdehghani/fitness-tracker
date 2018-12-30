@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+    <div class="buttom-media" fxHide.gt-xs>
+      <button (click)="toToggleSidebar()" mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <div><a routerLink="/"></a>LOGO</div>
+    <div class="navigation-all" fxHide.xs>
+        <ul class="navigation-item">
+            <li><a routerLink="/signup">Signup</a></li>
+            <li><a routerLink="/login">Login</a></li>
+            <li><a routerLink="/training">Training</a></li>
+            <li><a>Logout</a></li>
+        </ul>
+    </div>
+  </mat-toolbar>
