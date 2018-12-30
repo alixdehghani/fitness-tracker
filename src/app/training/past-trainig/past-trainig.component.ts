@@ -1,6 +1,6 @@
 import { Exercise } from './../exercise.model';
-import { Component, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import { TrainingService } from '../training.service';
 
 @Component({
@@ -8,13 +8,16 @@ import { TrainingService } from '../training.service';
   templateUrl: './past-trainig.component.html',
   styleUrls: ['./past-trainig.component.css']
 })
-export class PastTrainigComponent implements OnInit {
+export class PastTrainigComponent implements OnInit, AfterViewInit {
   displayedColumns = ['date','name','duration','calories','state'];
   dataSource = new MatTableDataSource<Exercise>();
   constructor(private trainingService: TrainingService) { }
-
+  @ViewChild(MatSort) sort: MatSort;
   ngOnInit() {
     this.dataSource.data= this.trainingService.getCompletedOrCanceledExcercised();
+  }
+  ngAfterViewInit(){
+    this.dataSource.sort = this.sort;
   }
 
 }
