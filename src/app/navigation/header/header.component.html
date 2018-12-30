@@ -7,10 +7,10 @@
     <div><a routerLink="/"></a>LOGO</div>
     <div class="navigation-all" fxHide.xs>
         <ul class="navigation-item">
-            <li><a routerLink="/signup">Signup</a></li>
-            <li><a routerLink="/login">Login</a></li>
-            <li><a routerLink="/training">Training</a></li>
-            <li><a>Logout</a></li>
+            <li *ngIf="!status"><a routerLink="/signup">Signup</a></li>
+            <li *ngIf="!status"><a routerLink="/login">Login</a></li>
+            <li *ngIf="status"><a routerLink="/training">Training</a></li>
+            <li *ngIf="status"><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
         </ul>
     </div>
   </mat-toolbar>

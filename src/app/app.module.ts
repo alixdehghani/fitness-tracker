@@ -1,7 +1,7 @@
 import { MaterialModule } from './material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenaveListComponent } from './navigation/sidenave-list/sidenave-list.component';
 import { StopCurrentTrainingComponent } from './training/current-trainig/stop-current-training/stop-current-training.component';
+import { AuthService } from './auth/auth.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,9 +38,10 @@ import { StopCurrentTrainingComponent } from './training/current-trainig/stop-cu
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthService ],
   bootstrap: [AppComponent],
   entryComponents: [StopCurrentTrainingComponent]
 })
