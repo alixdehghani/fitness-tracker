@@ -5,11 +5,13 @@ import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { TrainingService } from '../training/training.service';
 import { MatSnackBar } from '@angular/material';
+import { UiService } from '../share/ui.service';
 @Injectable()
 export class AuthService {
+
     authChange = new Subject<boolean>();
     isAuthentication = false;
-    constructor(private router: Router, private afAuth: AngularFireAuth, private trainingService: TrainingService, private snackBar: MatSnackBar) { }
+    constructor(private router: Router, private afAuth: AngularFireAuth, private trainingService: TrainingService, private snackBar: MatSnackBar, private uiService: UiService) { }
     initAuthLisiner() {
         this.afAuth.authState.subscribe(user => {
             if (user) {
@@ -25,20 +27,25 @@ export class AuthService {
         });
     }
     registerUser(authData: AuthData) {
+        this.uiService.loadingSpining.next(true);
         this.afAuth.auth.createUserWithEmailAndPassword(authData.email, authData.password).then(massage =>{
             // console.log(massage);
-            
+            this.uiService.loadingSpining.next(false);
         }).catch(error => {
             // console.log(error);
+            this.uiService.loadingSpining.next(false);
             this.snackBar.open(error.message, null, {
                 duration: 2000,
               });
         });
     }
     loginUser(authData: AuthData) {
+        this.uiService.loadingSpining.next(true);
         this.afAuth.auth.signInWithEmailAndPassword(authData.email, authData.password).then(massage => {
-            console.log(massage);  
+            // console.log(massage);  
+            this.uiService.loadingSpining.next(false);
         }).catch(error => {
+            this.uiService.loadingSpining.next(false);
             this.snackBar.open(error.message, null, {
                 duration: 2000,
               });
