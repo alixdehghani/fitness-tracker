@@ -21,17 +21,19 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.loadingSpining = resault;
     })
     this.maxDate = new Date();
-    this.maxDate.setFullYear(this.maxDate.getFullYear()-18);
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     this.authService.registerUser({
       email: form.value.email,
       password: form.value.password
     })
-    
+
   }
-  ngOnDestroy(){
-    this.loadingSpiningSubscription.unsubscribe();
+  ngOnDestroy() {
+    if (this.loadingSpiningSubscription) {
+      this.loadingSpiningSubscription.unsubscribe();
+    }
   }
 
 }

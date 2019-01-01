@@ -1,19 +1,20 @@
 import { AuthData } from './auth-data.model';
-import { Subject } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { Subject, Subscription } from 'rxjs';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from 'angularfire2/auth'
 import { TrainingService } from '../training/training.service';
 import { MatSnackBar } from '@angular/material';
 import { UiService } from '../share/ui.service';
 @Injectable()
-export class AuthService {
+export class AuthService implements OnDestroy {
 
     authChange = new Subject<boolean>();
     isAuthentication = false;
+    authSubscription: Subscription;
     constructor(private router: Router, private afAuth: AngularFireAuth, private trainingService: TrainingService, private snackBar: MatSnackBar, private uiService: UiService) { }
     initAuthLisiner() {
-        this.afAuth.authState.subscribe(user => {
+        this.authSubscription = this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.isAuthentication = true;
                 this.authChange.next(true);
@@ -55,6 +56,11 @@ export class AuthService {
 
     isAuth() {
         return this.isAuthentication
+    }
+    ngOnDestroy(){
+        if(this.authSubscription){
+            this.authSubscription.unsubscribe();
+        }
     }
 
 }

@@ -1,17 +1,19 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { StopCurrentTrainingComponent } from './stop-current-training/stop-current-training.component';
 import { TrainingService } from '../training.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-current-trainig',
   templateUrl: './current-trainig.component.html',
   styleUrls: ['./current-trainig.component.css']
 })
-export class CurrentTrainigComponent implements OnInit {
+export class CurrentTrainigComponent implements OnInit, OnDestroy {
   @Output() onGoingExit = new EventEmitter();
   progress = 0;
   timer = 0;
+  stoptrSubscription: Subscription;
   constructor(private dialog: MatDialog, private trainingService: TrainingService) { }
 
   ngOnInit() {
@@ -30,7 +32,7 @@ export class CurrentTrainigComponent implements OnInit {
   onStop() {
     clearInterval(this.timer);
     const stoptr = this.dialog.open(StopCurrentTrainingComponent, { data: { progress: this.progress } });
-    stoptr.afterClosed().subscribe((resualt) => {
+    this.stoptrSubscription = stoptr.afterClosed().subscribe((resualt) => {
       if (resualt) {
         this.trainingService.canceledExercise(this.progress);
       }
@@ -38,5 +40,10 @@ export class CurrentTrainigComponent implements OnInit {
         this.onCounterProgress();
       }
     })
+  }
+  ngOnDestroy(){
+    if(this.stoptrSubscription){
+      this.stoptrSubscription.unsubscribe();
+    }
   }
 }

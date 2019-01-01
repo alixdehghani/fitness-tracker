@@ -18,15 +18,17 @@ export class SidenaveListComponent implements OnInit, OnDestroy {
       this.status = authStatus;
     })
   }
-  toCloseSidenave(){
+  toCloseSidenave() {
     this.closeSadenave.emit()
   }
 
-  ngOnDestroy(){
-    this.subScription.unsubscribe();
+  ngOnDestroy() {
+    if (this.subScription) {
+      this.subScription.unsubscribe();
+    }
   }
 
-  onLogout(){
+  onLogout() {
     this.toCloseSidenave();
     this.authService.logoutUser();
   }
