@@ -15,15 +15,10 @@ export class PastTrainigComponent implements OnInit, AfterViewInit, OnDestroy {
   displayedColumns = ['date', 'name', 'duration', 'calories', 'state'];
   dataSource = new MatTableDataSource<Exercise>();
   private exerciseSubscription: Subscription;
-  loadingSnipning = false;
-  loadingSpiningSubscription: Subscription;
   constructor(private trainingService: TrainingService, private uiService: UiService) { }
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit() {
-    this.loadingSpiningSubscription = this.uiService.loadingSpining.subscribe(resault => {
-      this.loadingSnipning = resault
-    })
     this.exerciseSubscription = this.trainingService.exercisesFinishChanged.subscribe((exercises: Exercise[]) => {
       this.dataSource.data = exercises;
     });
@@ -39,9 +34,6 @@ export class PastTrainigComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy() {
     if (this.exerciseSubscription) {
       this.exerciseSubscription.unsubscribe();
-    }
-    if (this.loadingSpiningSubscription) {
-      this.loadingSpiningSubscription.unsubscribe();
     }
   }
 
