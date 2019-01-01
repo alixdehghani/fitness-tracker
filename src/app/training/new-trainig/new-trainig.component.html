@@ -6,7 +6,8 @@
     <mat-card fxFlex.xs="100%" fxFlex="400px">
       <mat-card-title fxLayoutAlign="center">Time to start a new work out!</mat-card-title>
       <mat-card-content fxLayoutAlign="center">
-        <mat-form-field>
+          <mat-spinner *ngIf="loadingSnipning"></mat-spinner>
+        <mat-form-field *ngIf="!loadingSnipning" >
           <!-- use mat select -->
           <mat-select placeholder="Select type of training" ngModel name="exercise" required>
             <mat-option *ngFor="let exercise of exercises" [value]="exercise.id">
@@ -17,7 +18,8 @@
       </mat-card-content>
       <mat-card-actions fxLayoutAlign="center">
         <!-- when submit the button an eventEmmiter send to trainig to show current training -->
-        <button type="submit" mat-button [disabled]="f.invalid">Start</button>
+        <button *ngIf="exercises" type="submit" mat-button [disabled]="f.invalid">Start</button>
+        <button *ngIf="!exercises" type="button" mat-button (click)="getAvailableExercise()" >Fetch Again</button>
       </mat-card-actions>
     </mat-card>
   </form>

@@ -34,9 +34,7 @@ export class AuthService {
         }).catch(error => {
             // console.log(error);
             this.uiService.loadingSpining.next(false);
-            this.snackBar.open(error.message, null, {
-                duration: 2000,
-              });
+            this.uiService.openSnackbar(error.message,null,2000);
         });
     }
     loginUser(authData: AuthData) {
@@ -46,9 +44,7 @@ export class AuthService {
             this.uiService.loadingSpining.next(false);
         }).catch(error => {
             this.uiService.loadingSpining.next(false);
-            this.snackBar.open(error.message, null, {
-                duration: 2000,
-              });
+            this.uiService.openSnackbar(error.message,null,2000);
         });
     }
     logoutUser() {
