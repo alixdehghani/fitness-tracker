@@ -11,7 +11,7 @@ I add some new features in this project:
   
   2- adding some css styles in login & signup pages
   
-  3- change some code to work with angular7 and rxjs
+  3- change some code to work with angular7 and rxjs6
   
 
 ## Development server
