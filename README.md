@@ -3,7 +3,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 
-I Develope this project from [Angular (Full App) with Angular Material, Angularfire](https://www.udemy.com/angular-full-app-with-angular-material-angularfire-ngrx) Created by Academind by Maximilian Schwarzmüller.
+I Develope this project from [Angular (Full App) with Angular Material and Angularfire](https://www.udemy.com/angular-full-app-with-angular-material-angularfire-ngrx) Created by Academind by Maximilian Schwarzmüller.
 
 I add some new features in this project: 
 
