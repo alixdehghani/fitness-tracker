@@ -1,25 +1,25 @@
 <section class="container">
   <form id="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <h3>Welcome to fitness-tracker</h3>
-    <p>please enter email and password</p>
+    <h3>{{ 'signup.welcomeMessage' | translate }}</h3>
+    <p>{{ 'signup.enterEmail' | translate }}</p>
     <mat-form-field class="form-control">
-      <input type="email" matInput placeholder="Your Email: " ngModel name="email" email required #emailInput="ngModel">
-      <mat-error *ngIf="emailInput.hasError('required')">Field most not be empty</mat-error>
-      <mat-error *ngIf="!emailInput.hasError('required')">Email is incorrect</mat-error>
+      <input type="email" matInput placeholder="{{'signup.emailPlaceHolder' | translate }}: " ngModel name="email" email required #emailInput="ngModel">
+      <mat-error *ngIf="emailInput.hasError('required')">{{'signup.emailEmptyError' | translate }}</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">{{'signup.errorValidEmail' | translate }}</mat-error>
     </mat-form-field>
-    <mat-form-field class="form-control" hintLabel="Should be at least 6 character long.">
-      <input type="password" matInput placeholder="Your Password: " ngModel name="password" required minlength="6" #pwInput="ngModel">
+    <mat-form-field class="form-control" hintLabel="{{'signup.hintPassword' | translate }}">
+      <input type="password" matInput placeholder="{{'signup.passwordPlaceHolder' | translate }} " ngModel name="password" required minlength="6" #pwInput="ngModel">
       <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
-      <mat-error>Has to be at least 6 character long.</mat-error>
+      <mat-error>{{'signup.errorValidPassword' | translate }}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-control">
-      <input matInput [matDatepicker]="picker" required placeholder="Enter your birthday" [max]="maxDate" ngModel name="birthday">
+      <input matInput [matDatepicker]="picker" required placeholder="{{'signup.enterBirthday' | translate }}" [max]="maxDate" ngModel name="birthday">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-    <mat-checkbox class="form-control" ngModel name="agree" required color="primary">Agree to Terms and Conditions</mat-checkbox>
-    <button *ngIf="!loadingSpining" class="form-control" type="submit"  mat-raised-button color="primary" [disabled]="f.invalid">Submit</button>
+    <mat-checkbox class="form-control" ngModel name="agree" required color="primary">{{'signup.agreeToTermsAndConditions' | translate }}</mat-checkbox>
+    <button *ngIf="!loadingSpining" class="form-control" type="submit"  mat-raised-button color="primary" [disabled]="f.invalid">{{'signup.submit' | translate }}</button>
     <mat-spinner *ngIf="loadingSpining" class="spining-control"></mat-spinner>
   </form>
 </section>

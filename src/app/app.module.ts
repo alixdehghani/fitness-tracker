@@ -24,6 +24,15 @@ import { StopCurrentTrainingComponent } from './training/current-trainig/stop-cu
 import { AuthService } from './auth/auth.service';
 import { TrainingService } from './training/training.service';
 import { UiService } from './share/ui.service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +57,15 @@ import { UiService } from './share/ui.service';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [AuthService, TrainingService, UiService],
   bootstrap: [AppComponent],

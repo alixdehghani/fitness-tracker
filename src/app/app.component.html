@@ -1,19 +1,21 @@
-<!-- add sidenav  -->
-<mat-sidenav-container>
-  <!-- #sidenav is refrence to sidenav which is also has close and toggle and ... function -->
-  <mat-sidenav #sidenav role="navigation">
-    <!-- app-sidenave-list is a component that has all item about sidenave
+<section [dir]="direction">
+  <!-- add sidenav  -->
+  <mat-sidenav-container>
+    <!-- #sidenav is refrence to sidenav which is also has close and toggle and ... function -->
+    <mat-sidenav #sidenav role="navigation">
+      <!-- app-sidenave-list is a component that has all item about sidenave
     and also has a EventEmmiter that close the sidenav when click an aitem of that -->
-    <app-sidenave-list (closeSadenave)="sidenav.close()"></app-sidenave-list>
-  </mat-sidenav>
-  <!-- mat-side-content is refrence to content of sidenav whiche is content that we see when sidenav is close -->
-  <mat-sidenav-content>
-    <!-- app header is all item about header's site
+      <app-sidenave-list (closeSadenave)="sidenav.close()"></app-sidenave-list>
+    </mat-sidenav>
+    <!-- mat-side-content is refrence to content of sidenav whiche is content that we see when sidenav is close -->
+    <mat-sidenav-content>
+      <!-- app header is all item about header's site
     and also has a EventEmmiter that toggle the sidenav when click an aitem of that -->
-    <app-header (toggleSidebar)="sidenav.toggle()"></app-header>
-    <main>
-      <!-- router-outlet is router include training login  signin -->
-      <router-outlet></router-outlet>
-    </main>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      <app-header (changeDiraction)="onchangeDirection($event)" (toggleSidebar)="sidenav.toggle()"></app-header>
+      <main>
+        <!-- router-outlet is router include training login  signin -->
+        <router-outlet></router-outlet>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</section>

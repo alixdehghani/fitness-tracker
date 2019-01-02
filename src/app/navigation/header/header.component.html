@@ -1,16 +1,23 @@
 <mat-toolbar color="primary">
-    <div class="buttom-media" fxHide.gt-xs>
-      <button (click)="toToggleSidebar()" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-    </div>
-    <div><a routerLink="/"></a>LOGO</div>
-    <div class="navigation-all" fxHide.xs>
-        <ul class="navigation-item">
-            <li *ngIf="!status"><a routerLink="/signup">Signup</a></li>
-            <li *ngIf="!status"><a routerLink="/login">Login</a></li>
-            <li *ngIf="status"><a routerLink="/training">Training</a></li>
-            <li *ngIf="status"><a style="cursor: pointer" (click)="onLogout()">Logout</a></li>
-        </ul>
-    </div>
-  </mat-toolbar>
+  <div class="buttom-media" fxHide.gt-xs>
+    <button (click)="toToggleSidebar()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div><a routerLink="/"></a>{{ 'header.logo' | translate }}</div>
+  <div class="navigation-all" fxHide.xs>
+    <ul class="navigation-item">
+      <li *ngIf="!status"><a routerLink="/signup">{{'header.signup'| translate }}</a></li>
+      <li *ngIf="!status"><a routerLink="/login">{{'header.login'| translate }}</a></li>
+      <li *ngIf="status"><a routerLink="/training">{{'header.status'| translate }}</a></li>
+      <li *ngIf="status"><a style="cursor: pointer" (click)="onLogout()">{{'header.logout'| translate }}</a></li>
+      <!-- <li *ngFor="let lang of translate.getLangs()" (click)="onChangeDirection(lang)">{{ lang }}</li> -->
+      <li>
+        <button mat-button [matMenuTriggerFor]="menu">En/فا</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngFor="let lang of translate.getLangs()" (click)="onChangeDirection(lang)" >{{ lang }}</button>
+        </mat-menu>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

@@ -1,19 +1,19 @@
-<section>
-  <form fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <input type="email" matInput placeholder="Your email" formControlName="email">
-      <mat-hint>Please enter a valid email.</mat-hint>
-      <mat-error>Invalid or missing email.</mat-error>
+<section fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" >
+  <form  class="form" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-control">
+      <input type="email" matInput placeholder="{{ 'login.emailPlaceHolder' | translate }}" formControlName="email">
+      <mat-hint>{{ 'login.enterVAlidEmail' | translate }}</mat-hint>
+      <mat-error>{{'login.errorValidEmail' | translate }}</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input type="password" matInput placeholder="Your password" formControlName="password">
-      <mat-hint>Please enter your password.</mat-hint>
-      <mat-error>Missing password.</mat-error>
-    </mat-form-field>
-    <button *ngIf="!loadSpining" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Submit</button>
-    <mat-spinner *ngIf="loadSpining" ></mat-spinner>
+    <mat-form-field class="form-control">
+      <input type="password" matInput placeholder="{{'login.passwordPlaceHolder' | translate }}" formControlName="password">
+      <mat-hint>{{'login.enterValidPassword' | translate }}</mat-hint>
+      <mat-error>{{'login.errorValidPassword' | translate }}</mat-error>
+    </mat-form-field >
+    <button class="form-control" *ngIf="!loadSpining" type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">{{'login.submit' | translate}}</button>
+    <mat-spinner *ngIf="loadSpining"></mat-spinner>
   </form>
-  
+
 </section>
 
 <!-- <ol>

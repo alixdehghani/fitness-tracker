@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { UiService } from 'src/app/share/ui.service';
 import { Subscription } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   maxDate;
   loadingSpining = false;
   loadingSpiningSubscription: Subscription;
-  constructor(private authService: AuthService, private uiServices: UiService) { }
+  constructor(private authService: AuthService, private uiServices: UiService, public translate: TranslateService) { }
 
   ngOnInit() {
     this.loadingSpiningSubscription = this.uiServices.loadingSpining.subscribe(resault => {

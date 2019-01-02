@@ -1,0 +1,32 @@
+{
+  "login": {
+    "selectLanguage": "لطفا زبان خود را انتخاب کنید",
+    "enterVAlidEmail": ".لطفا ایمیل خود را به صورت صحیح وارد کنید",
+    "errorValidEmail": ".ایمیل وارد شده اشتباه است",
+    "emailPlaceHolder": "ایمیل شما",
+    "passwordPlaceHolder": "پسورد شما",
+    "enterValidPassword": ".پسورد خود را وارد کنید",
+    "errorValidPassword": ".پسورد اشتباه است",
+    "submit": "ورود"
+  },
+  "signup": {
+    "welcomeMessage": "به اسپرت ترکر خوش آمدید",
+    "enterEmail": "ایمیل و پسورد خود را وارد کنید",
+    "emailPlaceHolder": "ایمیل شما",
+    "emailEmptyError": "ایمیل نباید خالی باشد",
+    "errorValidEmail": ".ایمیل وارد شده اشتباه است",
+    "hintPassword": "پسورد باید حداقل شش کاراکتر باشد",
+    "passwordPlaceHolder": "پسورد شما",
+    "errorValidPassword": "پسورد باید حداقل شش کاراکتر باشد",
+    "enterBirthday": "تاریخ تولد خود را وارد کنید",
+    "agreeToTermsAndConditions": "موافقت با قوانین و شرایط",
+    "submit": "ثبت"
+  },
+  "header": {
+    "logo": "اسپرت ترکر",
+    "signup": "عضو شدن",
+    "login": "ورود",
+    "status": "ورزش ها",
+    "logout": "خارج شدن"
+  }
+}
