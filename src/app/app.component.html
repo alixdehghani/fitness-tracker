@@ -5,7 +5,7 @@
     <mat-sidenav #sidenav role="navigation">
       <!-- app-sidenave-list is a component that has all item about sidenave
     and also has a EventEmmiter that close the sidenav when click an aitem of that -->
-      <app-sidenave-list (closeSadenave)="sidenav.close()"></app-sidenave-list>
+      <app-sidenave-list (changeDiractionSidenave)="onchangeDirection($event)"  (closeSadenave)="sidenav.close()"></app-sidenave-list>
     </mat-sidenav>
     <!-- mat-side-content is refrence to content of sidenav whiche is content that we see when sidenav is close -->
     <mat-sidenav-content>
