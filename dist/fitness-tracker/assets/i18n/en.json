@@ -1,0 +1,32 @@
+{
+  "login": {
+    "selectLanguage": "select Your Language",
+    "enterVAlidEmail": "Please enter a valid email.",
+    "emailPlaceHolder": "Your email",
+    "passwordPlaceHolder": "Your password",
+    "errorValidEmail": "Invalid or missing email.",
+    "enterValidPassword": "Please enter your password.",
+    "errorValidPassword": "Missing password.",
+    "submit": "submit"
+  },
+  "signup": {
+    "welcomeMessage": "Welcome to fitness-tracker",
+    "enterEmail": "please enter email and password",
+    "emailPlaceHolder": "Your email",
+    "emailEmptyError": "Field most not be empty",
+    "errorValidEmail": "Invalid or missing email.",
+    "hintPassword": "Should be at least 6 character long.",
+    "passwordPlaceHolder": "Your password",
+    "errorValidPassword": "Has to be at least 6 character long.",
+    "enterBirthday": "Enter your birthday",
+    "agreeToTermsAndConditions": "Agree to Terms and Conditions",
+    "submit": "submit"
+  },
+  "header": {
+    "logo": "SportTracker",
+    "signup": "Signup",
+    "login": "Login",
+    "status": "Training",
+    "logout": "Logout"
+  }
+}
