@@ -27,6 +27,7 @@ import { UiService } from './share/ui.service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { DateChangePipe } from './date-change.pipe';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -46,6 +47,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HeaderComponent,
     SidenaveListComponent,
     StopCurrentTrainingComponent,
+    DateChangePipe,
   ],
   imports: [
     BrowserModule,

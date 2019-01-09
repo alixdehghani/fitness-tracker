@@ -25,6 +25,6 @@ export class AppComponent implements OnInit {
     this.direction = "rtl"
     this.translate.addLangs(['en', 'fa']);
     this.translate.setDefaultLang('fa');
-    this.authService.initAuthLisiner();
+    this.authService.initAuthLisiner();    
   }
 }
